@@ -14,7 +14,7 @@ func (k msgServer) CreatePost(goCtx context.Context, msg *types.MsgCreatePost) (
 	_ = ctx
 	// Create variable of type Post
 	var post = types.Post{
-		Creator: msg.creator,
+		Creator: msg.Creator,
 		Title:	 msg.Title,
 		Body:	 msg.Body,
 	}
