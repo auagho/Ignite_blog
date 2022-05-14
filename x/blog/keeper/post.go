@@ -1,17 +1,17 @@
 package keeper
 
 import (
-  "encoding/binary"
-  "github.com/auagho/blog/x/blog/types"
-  "github.com/cosmos/cosmos-sdk/store/prefix"
-  sdk "github.com/cosmos/cosmos-sdk/types"
+	"encoding/binary"
+	"github.com/auagho/blog/x/blog/types"
+	"github.com/cosmos/cosmos-sdk/store/prefix"
+	sdk "github.com/cosmos/cosmos-sdk/types"
 )
 
 func (k Keeper) AppendPost(ctx sdk.Context, post types.Post) uint64 {
 	// Get the current number of posts in the store
-    count := k.GetPostCount(ctx)
-    // Assign an ID to the post based on the number of posts in the store
-    post.Id = count
+	count := k.GetPostCount(ctx)
+	// Assign an ID to the post based on the number of posts in the store
+	post.Id = count
 	// Get the store
 	store := prefix.NewStore(ctx.KVStore(k.storeKey), []byte(types.PostKey))
 	// Convert the post ID into bytes
