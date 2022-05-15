@@ -12,9 +12,9 @@ func (k msgServer) CreateComment(goCtx context.Context, msg *types.MsgCreateComm
 	ctx := sdk.UnwrapSDKContext(goCtx)
 
 	// TODO: Handling the message
-  post := k.GetPost(ctx, msg.PostID)
+	post := k.GetPost(ctx, msg.PostID)
 	postId := post.Id
-	
+
 	// Check if the Post Exists for which a comment is being created
 	if msg.PostID == 0 {
 		return nil, sdkerrors.Wrapf(types.ErrID, "Post Blog Id does not exist for which comment with Blog Id %d was made", msg.PostID)
@@ -29,7 +29,7 @@ func (k msgServer) CreateComment(goCtx context.Context, msg *types.MsgCreateComm
 		PostID:    msg.PostID,
 		CreatedAt: ctx.BlockHeight(),
 	}
-	
+
 	// Check if the comment is older than the Post. If more than 100 blocks, then return error.
 	if comment.CreatedAt > post.CreatedAt+100 {
 		return nil, sdkerrors.Wrapf(types.ErrCommentOld, "Comment created at %d is older than post created at %d", comment.CreatedAt, post.CreatedAt)

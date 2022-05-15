@@ -9,5 +9,5 @@ import (
 // x/blog module sentinel errors
 var (
 	ErrCommentOld = sdkerrors.Register(ModuleName, 1300, "")
-	ErrID = sdkerrors.Register(ModuleName, 1400, "")
+	ErrID         = sdkerrors.Register(ModuleName, 1400, "")
 )
