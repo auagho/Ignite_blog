@@ -40,4 +40,3 @@ func (k Keeper) Posts(c context.Context, req *types.QueryPostsRequest) (*types.Q
 	// Return a struct containing a list of posts and pagination info
 	return &types.QueryPostsResponse{Post: posts, Pagination: pageRes}, nil
 }
-
